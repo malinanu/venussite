@@ -18,10 +18,10 @@ The originals are in `design/assets/`.
 
 ## Rolling back
 
-Each approved milestone is tagged. To restore a version of the design files:
+The approved design before the hero scroll animation is kept on the branch `claude/design-snapshot-v1`. To restore a version of the design files:
 
 ```sh
-git checkout v1-hero-approved -- design/
+git checkout origin/claude/design-snapshot-v1 -- design/
 ```
 
 then republish the restored files to the canvas.
