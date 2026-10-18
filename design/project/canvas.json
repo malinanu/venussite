@@ -1,0 +1,207 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Hero1.dc.html": {
+      "h": 820,
+      "page": "heroes",
+      "title": "1 — Ivory & arch (light)",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Hero2.dc.html": {
+      "h": 820,
+      "page": "heroes",
+      "title": "2 — Theatre marquee",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "Hero3.dc.html": {
+      "h": 820,
+      "page": "heroes",
+      "title": "3 — Featured slider",
+      "w": 1440,
+      "x": 0,
+      "y": 940
+    },
+    "Hero4.dc.html": {
+      "h": 820,
+      "page": "heroes",
+      "title": "4 — Editorial black & white",
+      "w": 1440,
+      "x": 1520,
+      "y": 940
+    },
+    "Hero5.dc.html": {
+      "h": 820,
+      "page": "heroes",
+      "title": "5 — Lotus maroon",
+      "w": 1440,
+      "x": 0,
+      "y": 1880
+    },
+    "Hero6.dc.html": {
+      "h": 820,
+      "page": "heroes",
+      "title": "6 — Bento tiles",
+      "w": 1440,
+      "x": 1520,
+      "y": 1880
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 8900,
+      "page": "home",
+      "title": "Desktop homepage",
+      "w": 1440,
+      "x": 4,
+      "y": 0
+    },
+    "Mobile.dc.html": {
+      "h": 11300,
+      "page": "home",
+      "title": "Mobile homepage",
+      "w": 390,
+      "x": 1520,
+      "y": 0
+    },
+    "ArtA.dc.html": {
+      "h": 760,
+      "page": "bgart",
+      "title": "A — Lotus mandala (About us)",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "ArtB.dc.html": {
+      "h": 760,
+      "page": "bgart",
+      "title": "B — Lotus vine borders (Giving back)",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "HeroArtA.dc.html": {
+      "x": 0,
+      "y": 1100,
+      "w": 1440,
+      "h": 940,
+      "page": "bgart",
+      "title": "Hero 1 — Mandala halo behind the logo"
+    },
+    "HeroArtB.dc.html": {
+      "x": 1520,
+      "y": 1100,
+      "w": 1440,
+      "h": 940,
+      "page": "bgart",
+      "title": "Hero 2 — Mandalas at both sides"
+    },
+    "HeroArtC.dc.html": {
+      "x": 3040,
+      "y": 1100,
+      "w": 1440,
+      "h": 940,
+      "page": "bgart",
+      "title": "Hero 3 — Mandala rising from below"
+    },
+    "HeroShell.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 940,
+      "page": "venus",
+      "title": "Hero — Venus scallop shell behind the logo"
+    },
+    "VenusSection.dc.html": {
+      "x": 1520,
+      "y": 0,
+      "w": 1440,
+      "h": 760,
+      "page": "venus",
+      "title": "Section — shell + myrtle & rose vine (CEO message)"
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-16T19:05:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "focused",
+    "file": "Main.dc.html"
+  },
+  "notes": {
+    "heroTitle": {
+      "kind": "title1",
+      "maxW": 2960,
+      "page": "heroes",
+      "text": "Hero options — pick one",
+      "w": 240,
+      "x": 0,
+      "y": -260
+    },
+    "artTitle": {
+      "kind": "title1",
+      "maxW": 2960,
+      "page": "bgart",
+      "text": "Background line art — previews only",
+      "x": 0,
+      "y": -260
+    },
+    "heroArtTitle": {
+      "kind": "title1",
+      "maxW": 4480,
+      "page": "bgart",
+      "text": "Hero with mandala — previews (live hero unchanged)",
+      "x": 0,
+      "y": 840
+    },
+    "venusTitle": {
+      "kind": "title1",
+      "maxW": 2960,
+      "page": "venus",
+      "text": "Venus art — shell, myrtle & roses (previews only)",
+      "x": 0,
+      "y": -260
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Mobile.dc.html",
+    "Hero1.dc.html",
+    "Hero2.dc.html",
+    "Hero3.dc.html",
+    "Hero4.dc.html",
+    "Hero5.dc.html",
+    "Hero6.dc.html",
+    "ArtA.dc.html",
+    "ArtB.dc.html",
+    "HeroArtA.dc.html",
+    "HeroArtB.dc.html",
+    "HeroArtC.dc.html",
+    "HeroShell.dc.html",
+    "VenusSection.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "heroes",
+      "name": "Hero options"
+    },
+    {
+      "id": "home",
+      "name": "Homepage"
+    },
+    {
+      "id": "bgart",
+      "name": "Line art previews"
+    },
+    {
+      "id": "venus",
+      "name": "Venus art previews"
+    }
+  ],
+  "title": "Venus Productions Website"
+}

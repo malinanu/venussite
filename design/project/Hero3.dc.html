@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hero 3 — Featured slider</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&amp;family=Jost:wght@400;500;600&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 1440px; height: 820px; position: relative; overflow: hidden; box-sizing: border-box; background: linear-gradient(to bottom, #0C0706 0%, #2A0E08 40%, #7A2C15 66%, #C0602F 76%, #2B0E07 77%, #120604 100%); color: #F4EEE3; font-family: 'Jost', sans-serif">
+<svg aria-hidden="true" width="1440" height="300" viewBox="0 0 1440 300" style="position: absolute; left: 0; bottom: 0">
+<path d="M0 130 C 240 90, 420 140, 640 108 S 1040 80, 1240 116 L 1440 100 L 1440 300 L 0 300 Z" fill="#331008"></path>
+<path d="M0 200 C 300 170, 640 214, 960 186 S 1300 176, 1440 192 L 1440 300 L 0 300 Z" fill="#160705"></path>
+</svg>
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(8,4,3,0.9) 0%, rgba(8,4,3,0.4) 50%, rgba(8,4,3,0) 80%)"></div>
+<header style="position: relative; display: flex; align-items: center; justify-content: space-between; padding: 14px 100px">
+<div style="display: flex; align-items: center; gap: 14px"><img src="/_blob/6692a004b32ad002c42101d498c7fa94" alt="" style="width: 48px; height: 48px; object-fit: contain"><img src="/_blob/802167aeeeca580eecd49d948f62fbe2" alt="Venus Productions" style="height: 30px"></div>
+<nav style="display: flex; gap: 28px; align-items: center; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #F1E4D4"><span>About</span><span>Productions</span><span>Events</span><span>Watch</span><span style="background: #D6AE5C; color: #0B0908; padding: 10px 20px; border-radius: 999px; font-weight: 600">Work with us</span></nav>
+</header>
+<div style="position: relative; padding: 92px 100px 0; max-width: 700px; display: flex; flex-direction: column; gap: 20px">
+<span style="font-size: 14px; letter-spacing: 0.3em; text-transform: uppercase; color: #F6C7A8">01 / 03 · Feature film · In production</span>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 128px; line-height: 0.92; color: #FBF4EA">Red Soil</h1>
+<p style="margin: 0; font-size: 19px; color: #E6D6C4; max-width: 520px">[One-line premise of the film.] A Venus Productions feature — Sri Lankan stories, on screen and on stage.</p>
+<div style="display: flex; gap: 14px; padding-top: 6px">
+<span style="display: inline-flex; align-items: center; gap: 12px; height: 52px; padding: 0 26px 0 8px; border-radius: 999px; background: #FBF4EA; color: #1A0A06; font-weight: 600"><span style="width: 38px; height: 38px; border-radius: 999px; background: #B4512A; display: inline-flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9-5.5z" fill="#FBF4EA"></path></svg></span>Watch teaser</span>
+<span style="display: inline-flex; align-items: center; height: 52px; padding: 0 28px; border-radius: 999px; border: 1px solid rgba(251,244,234,0.5)">About the film</span>
+</div>
+</div>
+<div style="position: absolute; left: 100px; right: 100px; bottom: 36px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="height: 3px; background: rgba(251,244,234,0.25)"><div style="width: 60%; height: 3px; background: #FBF4EA"></div></div>
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #F6C7A8">01 · Film</span>
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700">Red Soil</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; opacity: 0.7">
+<div style="height: 3px; background: rgba(251,244,234,0.25)"></div>
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #E6D6C4">02 · Teledrama</span>
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700">Natath Ayek Sura Mathin</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; opacity: 0.7">
+<div style="height: 3px; background: rgba(251,244,234,0.25)"></div>
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #E6D6C4">03 · Live</span>
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700">On stage in Australia</span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":820}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
