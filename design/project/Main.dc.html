@@ -39,7 +39,7 @@ input,select,textarea{font:inherit}
 
 <!-- 2. HERO -->
 <section id="top" ref="{{heroRef}}" style="position: relative; height: {{heroTrackH}}px; background: #0B0908">
-<div style="position: sticky; top: 81px; height: {{stageH}}px; overflow: hidden; background: radial-gradient(ellipse 45% 55% at 50% 42%, rgba(214,174,92,0.14), rgba(11,9,8,0) 70%), #0B0908">
+<div style="position: sticky; top: 81px; z-index: 0; height: {{stageH}}px; overflow: hidden; background: radial-gradient(ellipse 45% 55% at 50% 42%, rgba(214,174,92,0.14), rgba(11,9,8,0) 70%), #0B0908">
 <div aria-hidden="true" style="position: absolute; top: 0; left: 50%; width: 1100px; height: 100%; transform: translateX(-50%); pointer-events: none; opacity: {{logoOp}}; z-index: 4">
 <div style="position: absolute; top: -40px; left: 14%; width: 260px; height: 780px; background: linear-gradient(to bottom, rgba(240,212,140,0.20), rgba(240,212,140,0) 85%); clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%); transform: rotate(-16deg); transform-origin: top center; filter: blur(6px)"></div>
 <div style="position: absolute; top: -40px; right: 14%; width: 260px; height: 780px; background: linear-gradient(to bottom, rgba(240,212,140,0.20), rgba(240,212,140,0) 85%); clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%); transform: rotate(16deg); transform-origin: top center; filter: blur(6px)"></div>
@@ -74,6 +74,7 @@ Watch the Red Soil teaser</a>
 <img src="/_blob/6692a004b32ad002c42101d498c7fa94" alt="Venus Productions" style="width: {{logoSize}}px; height: {{logoSize}}px; object-fit: contain; filter: drop-shadow(0 0 40px rgba(214,174,92,0.35)); opacity: {{logoOp}}; transform: translateY({{logoDy}}px) scale({{logoS}}); margin-bottom: {{logoMb}}px">
 </div>
 <div style="position: absolute; left: 50%; bottom: 34px; z-index: 5; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: {{accent}}; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; opacity: {{cueOp}}; pointer-events: none">Scroll<svg width="16" height="10" viewBox="0 0 16 10" aria-hidden="true"><path d="M1 1l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></div>
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 120px; z-index: 6; pointer-events: none; background: linear-gradient(to bottom, rgba(11,9,8,0), #0B0908)"></div>
 <div style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; opacity: {{stripOp}}; pointer-events: {{stripPe}}">
 <div style="max-width: 976px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); border-top: 1px solid #2A241C; text-align: left; background: rgba(11,9,8,0.6)">
 <a href="#red-soil" style="display: flex; align-items: center; gap: 16px; padding: 20px 8px; text-decoration: none; color: #F4EEE3">
@@ -92,7 +93,7 @@ Watch the Red Soil teaser</a>
 </section>
 
 <!-- 3. ABOUT -->
-<section id="about" style="position: relative; overflow: hidden; border-top: 1px solid #2A241C">
+<section id="about" style="position: relative; z-index: 1; margin-top: -{{aboutOverlap}}px; overflow: hidden; border-top: 1px solid #2A241C; background: #0B0908; box-shadow: 0 -30px 60px rgba(0,0,0,0.55)">
 <img src="/_blob/35478477a5ba01d7a257ad47d5fe48b5" alt="" aria-hidden="true" style="position: absolute; right: -470px; top: -150px; width: 1060px; height: 1060px; opacity: 0.16; pointer-events: none">
 <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 112px 32px; display: flex; flex-wrap: wrap; gap: 48px 80px">
 <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
@@ -452,41 +453,41 @@ class Component extends DCLogic {
     const st = this.state || {};
     const heroOn = st.heroOn !== false;
     // Without scrolling (canvas overview) show the stage with the curtains open.
-    const hp = heroOn ? (st.heroP || 0) : 0.35;
+    const hp = heroOn ? (st.heroP || 0) : 0.25;
     const stageH = st.stageH || 820;
     const clamp = (v) => Math.min(1, Math.max(0, v));
     const ease = (v) => 1 - Math.pow(1 - v, 3);
-    // 0 → 0.35: closed curtains part and reveal the text; 0.35 → 0.75: text zooms away; then the logo fades.
+    // 0 → 0.25: closed curtains part and reveal the text; 0.25 → 0.6: text zooms away; from ~0.55 About slides up over the stage.
     const smooth = (v) => v * v * (3 - 2 * v);
-    const reveal = smooth(clamp(hp / 0.35));
-    const textT = clamp((hp - 0.35) / 0.35);
+    const reveal = smooth(clamp(hp / 0.25));
+    const textT = clamp((hp - 0.25) / 0.35);
     const zoom = st.reduced ? 0 : ease(textT);
-    const slide = ease(clamp((hp - 0.45) / 0.45));
-    const logoFade = clamp((hp - 0.7) / 0.28);
+    const slide = ease(clamp((hp - 0.3) / 0.35));
     const textH = st.textH || 330;
     return {
       heroRef: (el) => { if (el) this.heroEl = el; },
       textRef: (el) => { if (el) this.textEl = el; },
-      heroTrackH: heroOn ? Math.round(stageH * 2.8) : stageH,
+      heroTrackH: heroOn ? Math.round(stageH * 3.2) : stageH,
+      aboutOverlap: heroOn ? stageH : 0,
       stageH,
       panTx: (-102 * reveal).toFixed(2),
       panTxR: (102 * reveal).toFixed(2),
       logoMb: textH + 26,
-      logoDy: Math.round(((textH + 26) / 2) * (1 - smooth(clamp(hp / 0.12)))),
-      cueOp: (1 - clamp(hp / 0.05)).toFixed(3),
+      logoDy: Math.round(((textH + 26) / 2) * (1 - smooth(clamp(hp / 0.08)))),
+      cueOp: (1 - clamp(hp / 0.03)).toFixed(3),
       curtS: (1.6 - 0.3 * reveal - 0.3 * ease(textT)).toFixed(3),
       curtTx: (-110 * slide).toFixed(2),
       curtTxR: (110 * slide).toFixed(2),
       logoSize: Math.round(Math.min(200, Math.max(120, stageH * 0.22))),
       h1Size: Math.round(Math.min(92, Math.max(48, stageH * 0.1))),
-      logoOp: (1 - logoFade).toFixed(3),
-      logoS: (1 + 0.12 * ease(clamp((hp - 0.35) / 0.5))).toFixed(3),
+      logoOp: 1,
+      logoS: (1 + 0.12 * ease(clamp((hp - 0.25) / 0.35))).toFixed(3),
       textOp: (1 - textT).toFixed(3),
       textS: (1 + 0.9 * zoom).toFixed(3),
       textY: Math.round(60 * zoom),
       textPe: reveal < 0.6 || textT > 0.6 ? 'none' : 'auto',
-      stripOp: (1 - clamp((hp - 0.35) / 0.15)).toFixed(3),
-      stripPe: reveal < 0.6 || hp > 0.45 ? 'none' : 'auto',
+      stripOp: (1 - clamp((hp - 0.25) / 0.1)).toFixed(3),
+      stripPe: reveal < 0.6 || hp > 0.3 ? 'none' : 'auto',
       statsRef: (el) => { if (el) this.statsEl = el; },
       c0: Math.round(targets[0] * e), c1: Math.round(targets[1] * e), c2: Math.round(targets[2] * e), c3: Math.round(targets[3] * e),
       statOp: Math.min(1, p * 2.5),
