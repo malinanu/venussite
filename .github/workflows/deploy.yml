@@ -11,16 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Configure SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.SSH_PORT || 22 }} -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
       - name: Deploy to CloudPanel Server
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT || 22 }}
-          script_stop: true
-          script: |
-            # Ensure Node.js and PM2 paths are accessible in non-interactive shells
+        run: |
+          ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT || 22 }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+            set -e
+
+            # Ensure Node.js and PM2 paths are loaded
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             export PATH=$NVM_DIR/versions/node/$(ls $NVM_DIR/versions/node 2>/dev/null | tail -n 1)/bin:$PATH:/usr/local/bin:$HOME/.local/bin:$HOME/bin
@@ -39,7 +42,7 @@ jobs:
             npm run build
 
             echo "==> Reloading PM2 process..."
-            APP_NAME="${{ secrets.PM2_APP_NAME || 'venus-cms' }}"
+            APP_NAME="venus-cms"
             if pm2 describe "$APP_NAME" > /dev/null 2>&1; then
               pm2 reload "$APP_NAME" --update-env
             else
@@ -48,3 +51,4 @@ jobs:
             pm2 save
 
             echo "==> Deployment successfully finished!"
+          EOF
