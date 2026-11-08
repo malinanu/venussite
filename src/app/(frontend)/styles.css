@@ -1,0 +1,62 @@
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-jost: 'Jost', system-ui, sans-serif;
+  --font-sinhala: 'Noto Serif Sinhala', 'Cormorant Garamond', Georgia, serif;
+}
+
+@keyframes vpCurtainL {
+  0%, 13% { transform: scaleX(1.6); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes vpCurtainR {
+  0%, 13% { transform: scaleX(1.6); }
+  100% { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vp-curtain {
+    animation: none !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #0B0908;
+  color: #F4EEE3;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0B0908;
+  color: #F4EEE3;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: #F0D48C;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #FFFFFF;
+}
+
+input, select, textarea, button {
+  font: inherit;
+}
+
+::selection {
+  background: #D6AE5C;
+  color: #0B0908;
+}
