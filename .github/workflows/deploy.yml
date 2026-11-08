@@ -41,8 +41,13 @@ jobs:
             cd ${{ secrets.TARGET_DIR }}
 
             if [ ! -d ".git" ]; then
-              echo "==> Git repository not found. Initializing clone..."
-              git clone https://github.com/malinanu/venussite.git .
+              echo "==> Initializing git repository and linking origin..."
+              git init
+              git remote add origin https://github.com/malinanu/venussite.git || git remote set-url origin https://github.com/malinanu/venussite.git
+              git fetch origin main
+              git reset --hard origin/main
+              git branch -M main
+              git branch --set-upstream-to=origin/main main
             else
               echo "==> Pulling latest changes from main branch..."
               git fetch origin main
