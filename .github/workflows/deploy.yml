@@ -13,9 +13,17 @@ jobs:
 
     steps:
       - name: Configure SSH Key
+        env:
+          RAW_SSH_KEY: ${{ secrets.SSH_KEY }}
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_KEY }}" | base64 -d > ~/.ssh/deploy_key
+          if echo "$RAW_SSH_KEY" | grep -q "BEGIN"; then
+            printf '%s\n' "$RAW_SSH_KEY" > ~/.ssh/deploy_key
+          else
+            echo "$RAW_SSH_KEY" | base64 -d > ~/.ssh/deploy_key
+          fi
+          # Ensure valid trailing newline and secure permissions
+          sed -i -e '$a\' ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p ${{ secrets.SSH_PORT || 22 }} -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
