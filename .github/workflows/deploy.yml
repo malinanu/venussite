@@ -40,9 +40,14 @@ jobs:
             # Navigate to website directory
             cd ${{ secrets.TARGET_DIR }}
 
-            echo "==> Pulling latest changes from main branch..."
-            git fetch origin main
-            git reset --hard origin/main
+            if [ ! -d ".git" ]; then
+              echo "==> Git repository not found. Initializing clone..."
+              git clone https://github.com/malinanu/venussite.git .
+            else
+              echo "==> Pulling latest changes from main branch..."
+              git fetch origin main
+              git reset --hard origin/main
+            fi
 
             echo "==> Installing dependencies..."
             npm ci --prefer-offline 2>/dev/null || npm install
