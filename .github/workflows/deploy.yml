@@ -60,14 +60,14 @@ jobs:
             echo "==> Building Next.js & Payload CMS..."
             npm run build
 
-            echo "==> Reloading PM2 process..."
+            echo "==> Reloading PM2 process on port 3004..."
             APP_NAME="venus-cms"
-            if pm2 describe "$APP_NAME" > /dev/null 2>&1; then
-              pm2 reload "$APP_NAME" --update-env
+            if npx pm2 describe "$APP_NAME" > /dev/null 2>&1; then
+              npx pm2 restart "$APP_NAME" --update-env
             else
-              pm2 start npm --name "$APP_NAME" -- run start
+              npx pm2 start npm --name "$APP_NAME" -- run start
             fi
-            pm2 save
+            npx pm2 save
 
             echo "==> Deployment successfully finished!"
           EOF
